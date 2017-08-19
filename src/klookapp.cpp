@@ -109,13 +109,13 @@ int KLookApp::newInstance()
         }
 
         m_viewer->setSource(QUrl::fromLocalFile(qmlPath));
-
-        QObject* rootObject = dynamic_cast<QObject*>(m_viewer->rootObject());
-
-        QObject::connect(m_viewer, SIGNAL(setFullScreenState()), rootObject, SLOT(setFullScreenState()));
-        QObject::connect(m_viewer, SIGNAL(setEmbeddedState()), rootObject, SLOT(setEmbeddedState()));
-        QObject::connect(m_viewer, SIGNAL(setStartWindow()), rootObject, SLOT(setStartWindow()));
-        QObject::connect(rootObject, SIGNAL(setGalleryView(bool)), m_viewer, SLOT(onSetGallery(bool)));
+        //FIXME
+//         QObject* rootObject = dynamic_cast<QObject*>(m_viewer->rootObject());
+// 
+//         QObject::connect(m_viewer, SIGNAL(setFullScreenState()), rootObject, SLOT(setFullScreenState()));
+//         QObject::connect(m_viewer, SIGNAL(setEmbeddedState()), rootObject, SLOT(setEmbeddedState()));
+//         QObject::connect(m_viewer, SIGNAL(setStartWindow()), rootObject, SLOT(setStartWindow()));
+//         QObject::connect(rootObject, SIGNAL(setGalleryView(bool)), m_viewer, SLOT(onSetGallery(bool)));
     }
 
     m_viewer->init(urls, embedded, rc, index);

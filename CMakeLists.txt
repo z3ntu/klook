@@ -58,11 +58,12 @@ kde4_add_app_icon( klook_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/hi*-apps-klook.
 kde4_add_executable( klook ${klook_SRCS} ${QRC_SOURCES} )
 
 target_link_libraries(klook
-                           kparts
-                           Exiv2
-                           KF5::Declarative
-                           KF5::KDELibs4Support
-                           Qt5::Widgets
+                      KF5::Declarative
+                      KF5::KDELibs4Support
+                      Qt5::Widgets
+                      Qt5::Quick
+                      ${PHONON_LIBRARY}
+                      ${EXIV2_LIBRARIES}
                       )
 
 

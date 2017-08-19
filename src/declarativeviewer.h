@@ -22,7 +22,7 @@
 #ifndef DECLARATIVEVIEWER_H
 #define DECLARATIVEVIEWER_H
 
-#include <QtDeclarative/QDeclarativeView>
+#include <QtQuick/QQuickView>
 
 class QRect;
 class PreviewGenerator;
@@ -54,11 +54,11 @@ typedef enum ArrowPosition
 
 } ArrowPosition;
 
-class DeclarativeViewer : public QDeclarativeView
+class DeclarativeViewer : public QQuickView
 {
     Q_OBJECT
 public:
-    explicit DeclarativeViewer(QWidget *parent = 0);
+    explicit DeclarativeViewer(QQuickView *parent = 0);
     virtual ~DeclarativeViewer();
 
     void init(QStringList urls, bool embedded = false, const QRect& rc = QRect(0, 0, 0, 0), int indexToShow = 0);
@@ -122,6 +122,7 @@ private:
     QSize getPreferredSize(const QString &path, int type) const;
     WidgetRegion calculateWindowRegion(const QPoint& mousePos);
     void setEmbedded(bool);
+    bool isFullScreen();
 
     void initModel(QStringList urls);
     void setViewMode(ViewMode mode);
