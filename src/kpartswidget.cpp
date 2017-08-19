@@ -21,9 +21,10 @@
 
 #include "kpartswidget.h"
 
-#include <QtGui/QDesktopWidget>
+#include <QDesktopWidget>
 
 #include <KToolBar>
+#include <KGlobal>
 
 KPartsWidget::KPartsWidget(QWidget *parent)
     : KParts::MainWindow(parent, static_cast<Qt::WindowFlags>(KDE_DEFAULT_WINDOWFLAGS))

@@ -1,25 +1,35 @@
-project( klook )
-cmake_minimum_required( VERSION 2.6 )
+project(klook)
+cmake_minimum_required(VERSION 2.8.12)
 
-find_package( KDE4 REQUIRED )
-include( KDE4Defaults )
+find_package(ECM REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
-find_package(KDeclarative)
+find_package(Qt5 REQUIRED COMPONENTS Core Gui Quick Qml)
+find_package(KF5 REQUIRED COMPONENTS KDELibs4Support Declarative I18n)
+find_package(Phonon4Qt5 REQUIRED)
+include_directories(${PHONON_INCLUDE_DIR})
 
-find_package( Qt4 REQUIRED QtCore QtGui QtDeclarative )
-include( ${QT_USE_FILE} )
-qt4_automoc( ${qtproject_SRCS} )
+include(FeatureSummary)
+include(KDECMakeSettings)
+include(KDEInstallDirs)
+include(ECMInstallIcons)
+include(CheckIncludeFiles)
+
+
+#include( ${QT_USE_FILE} )
+set(CMAKE_AUTOMOC ON)
 add_definitions( ${QT_DEFINITIONS})
 
-include_directories( ${KDE4_INCLUDES} ${QT_QDECLARATIVE_INCLUDE_DIR} ${KDECLARATIVE_INCLUDE_DIRS} )
 add_subdirectory( icons )
 
 set(EXIV2_MIN_VERSION "0.19")
-find_package(Exiv2)
-macro_log_feature(EXIV2_FOUND "Exiv2" "Provides image metadata support" "http://www.exiv2.org" TRUE ${EXIV2_MIN_VERSION} "")
+find_package(Exiv2 REQUIRED)
+set_package_properties("Exiv2" PROPERTIES
+                       DESCRIPTION "Provides image metadata support"
+                       URL "http://www.exiv2.org"
+                       TYPE REQUIRED)
 
-set( RESOURCES src/resources.qrc )
-QT4_ADD_RESOURCES( QRC_SOURCES ${RESOURCES} )
+qt5_add_resources( RESOURCES src/resources.qrc )
 
 file( GLOB qml_files "${CMAKE_CURRENT_SOURCE_DIR}/src/qml/*.qml" )
 
@@ -47,15 +57,12 @@ set_source_files_properties(src/rotatedimage.cpp PROPERTIES COMPILE_FLAGS ${KDE4
 kde4_add_app_icon( klook_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/hi*-apps-klook.png" )
 kde4_add_executable( klook ${klook_SRCS} ${QRC_SOURCES} )
 
-target_link_libraries( klook ${KDE4_KIO_LIBS}
-                           ${EXIV2_LIBRARIES}
-                           ${KDE4_PHONON_LIBS}
-                           ${KDE4_PLASMA_LIBS}
-                           ${KDE4_KFILE_LIBS}
+target_link_libraries(klook
                            kparts
-                           ${KDECLARATIVE_LIBRARIES}
-                           ${QT_LIBRARIES}
-                           ${QT_QDECLARATIVE_LIBRARIES}
+                           Exiv2
+                           KF5::Declarative
+                           KF5::KDELibs4Support
+                           Qt5::Widgets
                       )
 
 
@@ -68,8 +75,8 @@ install( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/qml/images/
 
 #Translations
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/locale)
-  find_package( Msgfmt REQUIRED )
   find_package( Gettext REQUIRED )
   add_subdirectory( locale )
 endif()
 
+feature_summary(WHAT ALL)

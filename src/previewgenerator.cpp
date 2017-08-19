@@ -28,6 +28,8 @@
 #include <KIO/PreviewJob>
 #include <KFile>
 #include <KIcon>
+#include <KMimeType>
+#include <KUrl>
 
 PreviewGenerator::PreviewGenerator()
     : m_plugins(KIO::PreviewJob::availablePlugins())

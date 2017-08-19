@@ -24,7 +24,7 @@
 #define VIDEO_H
 
 #include <QGraphicsProxyWidget>
-#include <Phonon/VideoPlayer>
+#include <phonon/VideoPlayer>
 #include <KUrl>
 
 class QHBoxLayout;

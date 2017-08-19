@@ -43,7 +43,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     bool setData (const QModelIndex & index, const QVariant & value, int role = Qt::EditRole);
 
-    const QHash<int, QByteArray> & roleNames () const;
+    //const QHash<int, QByteArray> & roleNames () const;
     void appendRow(ListItem* item);
     void appendRows(QList<ListItem *> items);
     void refreshRow(int row);

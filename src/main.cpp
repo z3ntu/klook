@@ -21,9 +21,9 @@
 
 #include <stdio.h>
 
-#include <KAboutData>
+#include <K4AboutData>
 #include <KCmdLineArgs>
-#include <KLocale>
+//#include <KLocale>
 
 #include "klookapp.h"
 
@@ -32,8 +32,8 @@ static const char version[] = "1.1";
 
 int main(int argc, char *argv[])
 {
-    KAboutData about("klook", "klook", ki18n("KLook"),
-                      version, ki18n(description), KAboutData::License_GPL_V3,
+    K4AboutData about("klook", "klook", ki18n("KLook"),
+                      version, ki18n(description), K4AboutData::License_GPL_V3,
                       ki18n("(c) ROSA 2011-2012"));
 
     about.addAuthor(ki18n("Julia Mineeva"),

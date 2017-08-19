@@ -25,7 +25,10 @@
 
 #include <kio/directorysizejob.h>
 #include <KIO/StatJob>
+
 #include <KLocale>
+#include <KLocalizedString>
+#include <KGlobal>
 
 ListItemContent::ListItemContent(File *file, QObject *parent)
     : QObject(parent)

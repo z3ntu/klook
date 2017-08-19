@@ -2,6 +2,7 @@
 #define KPARTSWIDGET_H
 
 #include <kparts/mainwindow.h>
+#include <kparts/readonlypart.h>
 
 #include <QtCore/QPointer>
 

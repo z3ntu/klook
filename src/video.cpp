@@ -22,11 +22,11 @@
 #include "video.h"
 
 
-#include <QtGui/QHBoxLayout>
+#include <QHBoxLayout>
 
-#include <Phonon/AudioOutput>
-#include <Phonon/MediaObject>
-#include <Phonon/VideoWidget>
+#include <phonon/AudioOutput>
+#include <phonon/MediaObject>
+#include <phonon/VideoWidget>
 
 Video::Video(QGraphicsItem* parent)
     : QGraphicsProxyWidget(parent)

@@ -1,4 +1,2 @@
-*.user
-*.orig
-klook-build-*
-build
+.kdev4/
+build/
